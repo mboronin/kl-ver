@@ -994,54 +994,19 @@ single_condition((Object > Value)):-
 question_info(early_syptoms, 'Which of this sympthoms do you have?',
 	['Hacking cough', 'Cold', 'Eye catarrh', 'Severe sore throat', 'Vomiting', 'Swollen ear salivary gland', 'Swollen tongue salivary gland', 'Fewer'],m,[]).
 
-question_info(high_fever, 'Do you have a high fever?',
+question_info(high_fever, 'Do you have a high fever or rash?',
 	[yes,no],s,[]).
 
-question_info(how_long, 'How long do you have it?',
-	[''])
-question_info(capital,'Amount of accesible capital?',[],w,[]).
-question_info(revenuetime,'Acceptable time for return',
-      ['1 month','1 year','5 years'],s,[not(capital<0)]).
-question_info(accessibility,'Do you need access to the capital with short notice?',
-      [yes,no,'dont know'],s,[(capital>0)]).
-question_info(riskwillingness,'how big a risk are you willing to take?',
-      [high,reasonable,low],s,[(capital>0)]).
-question_info(taxplanning,'do you need tax planning?',
-      [yes,no,'dont know'],s,[]).
-
-question_info(inflation,'The inflation rate is ',
-      [high,normal,low,'dont know'],s,[]).
-question_info(financialpolicy,'Is there a risk for: ',
-      [devaluation,revaluation,none,'dont know'],s,[]).
-question_info(prognosis,'What is the prognosis for the economical development? ',
-      [recession,expanding,none,'dont know'],s,[]).
-question_info(devaluation,'What is the expeted percentage of the devaluation?',
-      [],w,[financialpolicy(devaluation)]).
-question_info(revaluation,'What is the expeted percentage of the revaluation?',
-      [],w,[financialpolicy(revaluation)]).
-question_info(dollarrate,'The dollar rate in respect of the swedish currency?',
-      [rising,falling,none,'dont know'],s,[]).
-
-question_info(interest,'Are you particularly interested in',
-      [art,antiques,preciousmetal,gemstones,stock,none,'dont know'],m,[]).
-question_info(experience,'Do you have previous experience of ',
-      [art,antiques,preciousmetal,gemstones,stock,none,'dont know'],m,[]).
-question_info(contacts,
-      'Do you have contact with a trustworthy business within any of the following fields? ',
-      [gemstones,antiques,stock,gold,none,'dont know'],m,[]).
-question_info(foregn_interest,
-	'Do you have foreign interest?',
-	[yes,no,'dont know'],s,[]).
-question_info(age,
-	'Is your age above 60?',
+question_info(how_long, 'Do you have it for 3 days or more?',
 	[yes,no],s,[]).
-question_info(government,
-	'Which block does governmnet belong to?',
-	['left','central','right'],s,[]).
-% Questions to be asked by the question generator.
-% question_order/1.
 
-question_order([capital,revenuetime,accessibility]).
+question_info(late_symptoms, 'Where did the rash start from?',
+	['Behind the ears and now covers whole body', 'At the neck or the breast'],s,[]).
+
+question_info(immunity, 'Do you have an immunity to Measles?',
+	[yes,no],s,[]).
+
+question_order([early_syptoms,high_fever,how_long,late_symptoms,immunity]).
 
 
 % Follow-up questions that could be asked when a question is
